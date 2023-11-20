@@ -12,7 +12,7 @@
     <style>
       body {
         font-family: "Roboto", sans-serif;
-        margin: 0;
+        margin: 20px;
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -246,6 +246,7 @@
                 <span class="submit-text">Войти</span>
               </button>
               <br />
+              <p>Здесь мы проверим есть ли такой user в ГПЛ, идентификация</p>
             </div>
           </div>
         </div>
@@ -291,6 +292,10 @@
                 >
               </button>
               <br />
+              <p>
+                Если такого user нет, собираем данные, если есть, переводим
+                сразу на ЛК
+              </p>
             </div>
           </div>
         </div>
@@ -301,20 +306,30 @@
       <h2>Здесь мы соберем данные пользователя для создания бального счета</h2>
       <div>
         <p>Введите Фамилию и Имя</p>
-        <input placeholder="Введите Фамилия" />
-        <input placeholder="Введите Имя" />
-        <p>Введите дату рождения</p>
-        <input type="date" />
-        <p>Введите email</p>
-        <input type="email" />
+        <label><input placeholder="Иванов" /> Введите Фамилию</label>
+        <label><input placeholder="Иван" /> Введите Имя</label>
+        <label><input type="date" /> Введите дату рождения</label>
+        <label
+          ><input type="email" placeholder="iivanov@ap.ru" /> Введите
+          email</label
+        >
       </div>
-      <input
-        type="checkbox"
-        id="myCheckbox"
-        name="myCheckbox"
-        value="checkboxValue"
-      />
-      <label for="myCheckbox">Здесь мы соберем согласия</label>
+      <br />
+      <div class>
+        <label>Здесь мы соберем согласия</label>
+        <label
+          ><input type="checkbox" id="checkbox3" /> На обработку ПДн*</label
+        >
+        <label><input type="checkbox" id="checkbox3" /> Маркетинговое</label>
+        <label
+          ><input type="checkbox" id="checkbox3" /> Участие в программе
+          лояльности*</label
+        >
+        <label
+          ><input type="checkbox" id="checkbox3" /> Выпуск цифрового
+          тарифа*</label
+        >
+      </div>
       <button
         class="submit-button btn btn-primary"
         id="fake_submit_button"
