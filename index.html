@@ -19,6 +19,7 @@
         align-items: center;
         justify-content: flex-start;
         height: 100vh;
+        margin-bottom: 20px;
       }
       h1 {
         color: #ff6933;
@@ -37,7 +38,7 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(204, 85, 0);
         width: 90%; /* Изменено на 90% для адаптивности */
-        max-width: 500px; /* Добавлено для ограничения максимальной ширины */
+        max-width: 400px; /* Добавлено для ограничения максимальной ширины */
         margin-top: 20px;
         margin-bottom: 20px;
       }
@@ -63,7 +64,105 @@
           width: 80%; /* Изменено на 90% для очень маленьких экранов */
         }
       }
+      /* Стили для блока auth-content */
+
+      .auth-content {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 8px;
+      }
+
+      .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .content-header-action {
+        flex: 1;
+      }
+
+      .content-header-logo {
+        max-width: 100px;
+        max-height: 40px;
+      }
+
+      .auth-content-main {
+        text-align: center;
+      }
+
+      #kc-content-wrapper {
+        margin-bottom: 20px;
+      }
+
+      .content-title {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .error-message {
+        color: #e74c3c;
+        margin-top: 5px;
+      }
+
+      #kc-footer-wrapper {
+        text-align: center;
+      }
+
+      .submit-button,
+      .btn-base {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .submit-button {
+        background-color: #ff6933;
+        color: #fff;
+      }
+
+      .submit-button:hover {
+        background-color: #cf410d;
+      }
+
+      .btn-base {
+        background-color: #2ecc71;
+        color: #fff;
+      }
+
+      .btn-base:hover {
+        background-color: #27ae60;
+      }
+
+      .drawer-close {
+        margin-top: 20px;
+      }
     </style>
+    <style></style>
   </head>
   <body>
     <h1>Управление лестничной механикой</h1>
@@ -93,7 +192,104 @@
     </div>
     <div id="progress-container"></div>
     <div id="sum"></div>
-
+    <h1>Процесс регистрации</h1>
+    <div class="container">
+      <div class="auth-content">
+        <div class="content-header">
+          <div class="content-header-action"></div>
+          <div class="content-header-logo"></div>
+          <div class="content-header-action"></div>
+        </div>
+        <div class="auth-content-main">
+          <form
+            id="kc-form-login"
+            class="mb-2"
+            action="https://id.x5.ru/auth/realms/ssox5id/login-actions/authenticate?session_code=SmcHn2cf25W3vTmdqiOtAnbIm-SPdqNT4B09_ZeE5Qo&amp;execution=23bc1ac5-165b-49e7-840a-0c4d7d955c42&amp;client_id=x5id-lk&amp;tab_id=mv__FduT7FQ"
+            method="post"
+          >
+            <div id="kc-content-wrapper" class="mb-4">
+              <div class="content-title">
+                <div class="title">Авторизация в ГПЛ</div>
+              </div>
+              <div class="content-main-section">
+                <label for="username" class="label"
+                  >Введите номер телефона</label
+                >
+                <input
+                  tabindex="1"
+                  id="username"
+                  name="username"
+                  class="input"
+                  autocomplete="tel"
+                  type="tel"
+                  autofocus=""
+                  maxlength="21"
+                  placeholder="+7"
+                />
+                <div id="error_username" class="error-message invisible"></div>
+              </div>
+            </div>
+            <div id="kc-footer-wrapper">
+              <button
+                class="submit-button btn btn-primary"
+                id="fake_submit_button"
+                title="Нажмите, чтобы подтвердить вход"
+              >
+                <span class="submit-text">Войти</span>
+              </button>
+              <br />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <h1>Подтверждение номера</h1>
+    <div class="container">
+      <div class="auth-content">
+        <div class="content-header">
+          <div class="content-header-action"></div>
+          <div class="content-header-logo"></div>
+          <div class="content-header-action"></div>
+        </div>
+        <div class="auth-content-main">
+          <form
+            id="kc-form-login"
+            class="mb-2"
+            action="https://id.x5.ru/auth/realms/ssox5id/login-actions/authenticate?session_code=SmcHn2cf25W3vTmdqiOtAnbIm-SPdqNT4B09_ZeE5Qo&amp;execution=23bc1ac5-165b-49e7-840a-0c4d7d955c42&amp;client_id=x5id-lk&amp;tab_id=mv__FduT7FQ"
+            method="post"
+          >
+            <div id="kc-content-wrapper" class="mb-4">
+              <!-- <div class="content-title">
+                <div class="title">Подтверждение номера</div>
+              </div> -->
+              <div class="content-main-section">
+                <label for="username" class="label">Введите код</label>
+                <input
+                  name="username"
+                  class="input"
+                  autocomplete="tel"
+                  type="tel"
+                  autofocus=""
+                  maxlength="4"
+                  placeholder="3342"
+                />
+                <div id="error_username" class="error-message invisible"></div>
+              </div>
+            </div>
+            <div id="kc-footer-wrapper">
+              <button
+                class="submit-button btn btn-primary"
+                id="fake_submit_button"
+                title="Нажмите, чтобы подтвердить вход"
+              >
+                <span class="submit-text">Подтвердить вход</span>
+              </button>
+              <br />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
