@@ -52,6 +52,7 @@
       #progress-container {
         width: 200px;
         height: 200px;
+        margin: 0 auto;
       }
       @media only screen and (max-width: 300px) {
         h1 {
@@ -161,52 +162,59 @@
       .drawer-close {
         margin-top: 20px;
       }
+      .container {
+        display: none;
+      }
+
+      .container.active {
+        display: block;
+      }
     </style>
     <style></style>
   </head>
   <body>
-    <h1>Управление лестничной механикой</h1>
-    <div class="container">
-      <div>
-        <p id="currentDate"></p>
+    <div class="container" id="mechanic">
+      <h1>Здесь будет ЛК</h1>
+      <h2>Управление лестничной механикой</h2>
+      <div class="container active">
+        <div>
+          <p id="currentDate"></p>
+        </div>
+        <label
+          ><input type="checkbox" id="checkbox1" /> Я участник программы
+          ГПЛ</label
+        >
+        <label
+          ><input type="checkbox" id="checkbox2" /> Я потратил больше 5000/8000
+          рублей</label
+        >
+        <label
+          ><input type="checkbox" id="checkbox3" /> Я купил подписку
+          пакет</label
+        >
+        <label
+          ><input type="checkbox" id="checkbox4" /> Я оплачиваю покупки ЦТ или
+          ко-брэнд картой
+        </label>
+        <label
+          ><input type="checkbox" id="checkbox5" /> Я выполнил условия Б</label
+        >
+        <label><input type="checkbox" id="checkbox6" /> Я купил полис АС</label>
       </div>
-      <label
-        ><input type="checkbox" id="checkbox1" /> Я участник программы
-        ГПЛ</label
-      >
-      <label
-        ><input type="checkbox" id="checkbox2" /> Я потратил больше 5000/8000
-        рублей</label
-      >
-      <label
-        ><input type="checkbox" id="checkbox3" /> Я купил подписку пакет</label
-      >
-      <label
-        ><input type="checkbox" id="checkbox4" /> Я оплачиваю покупки ЦТ или
-        ко-брэнд картой
-      </label>
-      <label
-        ><input type="checkbox" id="checkbox5" /> Я выполнил условия Б</label
-      >
-      <label><input type="checkbox" id="checkbox6" /> Я купил полис АС</label>
+      <div id="progress-container"></div>
+      <div id="sum"></div>
     </div>
-    <div id="progress-container"></div>
-    <div id="sum"></div>
-    <h1>Процесс регистрации</h1>
-    <div class="container">
-      <div class="auth-content">
+
+    <div class="container active" id="registration-block">
+      <h1>Процесс регистрации</h1>
+      <div class="auth-content" id="registration-block">
         <div class="content-header">
           <div class="content-header-action"></div>
           <div class="content-header-logo"></div>
           <div class="content-header-action"></div>
         </div>
         <div class="auth-content-main">
-          <form
-            id="kc-form-login"
-            class="mb-2"
-            action="https://id.x5.ru/auth/realms/ssox5id/login-actions/authenticate?session_code=SmcHn2cf25W3vTmdqiOtAnbIm-SPdqNT4B09_ZeE5Qo&amp;execution=23bc1ac5-165b-49e7-840a-0c4d7d955c42&amp;client_id=x5id-lk&amp;tab_id=mv__FduT7FQ"
-            method="post"
-          >
+          <div id="kc-form-login" class="mb-2">
             <div id="kc-content-wrapper" class="mb-4">
               <div class="content-title">
                 <div class="title">Авторизация в ГПЛ</div>
@@ -232,19 +240,20 @@
             <div id="kc-footer-wrapper">
               <button
                 class="submit-button btn btn-primary"
-                id="fake_submit_button"
+                id="loginButton"
                 title="Нажмите, чтобы подтвердить вход"
               >
                 <span class="submit-text">Войти</span>
               </button>
               <br />
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-    <h1>Подтверждение номера</h1>
-    <div class="container">
+
+    <div class="container none" id="confirmation-block">
+      <h1>Подтверждение номера</h1>
       <div class="auth-content">
         <div class="content-header">
           <div class="content-header-action"></div>
@@ -252,12 +261,7 @@
           <div class="content-header-action"></div>
         </div>
         <div class="auth-content-main">
-          <form
-            id="kc-form-login"
-            class="mb-2"
-            action="https://id.x5.ru/auth/realms/ssox5id/login-actions/authenticate?session_code=SmcHn2cf25W3vTmdqiOtAnbIm-SPdqNT4B09_ZeE5Qo&amp;execution=23bc1ac5-165b-49e7-840a-0c4d7d955c42&amp;client_id=x5id-lk&amp;tab_id=mv__FduT7FQ"
-            method="post"
-          >
+          <div id="kc-form-login" class="mb-2">
             <div id="kc-content-wrapper" class="mb-4">
               <!-- <div class="content-title">
                 <div class="title">Подтверждение номера</div>
@@ -282,14 +286,75 @@
                 id="fake_submit_button"
                 title="Нажмите, чтобы подтвердить вход"
               >
-                <span class="submit-text">Подтвердить вход</span>
+                <span class="submit-text" id="codeSubmit"
+                  >Подтвердить вход</span
+                >
               </button>
               <br />
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+    <div class="container" id="info">
+      <h1>Анкета и Согласия</h1>
+      <h2>Здесь мы соберем данные пользователя для создания бального счета</h2>
+      <div>
+        <p>Введите Фамилию и Имя</p>
+        <input placeholder="Введите Фамилия" />
+        <input placeholder="Введите Имя" />
+        <p>Введите дату рождения</p>
+        <input type="date" />
+        <p>Введите email</p>
+        <input type="email" />
+      </div>
+      <input
+        type="checkbox"
+        id="myCheckbox"
+        name="myCheckbox"
+        value="checkboxValue"
+      />
+      <label for="myCheckbox">Здесь мы соберем согласия</label>
+      <button
+        class="submit-button btn btn-primary"
+        id="fake_submit_button"
+        title="Нажмите, чтобы подтвердить вход"
+      >
+        <span class="submit-text" id="infoSubmit"
+          >Создать бальный счет и ЛК
+        </span>
+      </button>
+    </div>
+    <script>
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function () {
+          // Скрыть блок регистрации
+          document
+            .getElementById("registration-block")
+            .classList.remove("active");
+
+          // Показать блок подтверждения
+          document
+            .getElementById("registration-block")
+            .classList.remove("none");
+          document.getElementById("confirmation-block").classList.add("active");
+        });
+      document
+        .getElementById("codeSubmit")
+        .addEventListener("click", function () {
+          document
+            .getElementById("confirmation-block")
+            .classList.remove("active");
+          document.getElementById("info").classList.add("active");
+        });
+      document
+        .getElementById("infoSubmit")
+        .addEventListener("click", function () {
+          document.getElementById("info").classList.remove("active");
+          document.getElementById("mechanic").classList.add("active");
+        });
+    </script>
     <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
